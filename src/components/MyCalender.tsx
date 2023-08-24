@@ -4,8 +4,15 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { GlobalUseContext } from "../utils/Context";
 import { useNavigate } from "react-router-dom";
 
-const ReservationCalendar: React.FC = () => {
-    const { selectedDate, handleDateChange } = GlobalUseContext()
+
+interface CalendarProps {
+  id:string,
+  time:string,
+  price: number
+}
+
+const ReservationCalendar: React.FC<CalendarProps> = ({time, price, id}) => {
+    const { selectedDate, handleDateChange, } = GlobalUseContext()
     const navigate = useNavigate()
     console.log(selectedDate)
 
@@ -44,8 +51,9 @@ const ReservationCalendar: React.FC = () => {
   
     return (
       <div className="p-4">
-        <h1 className="text-xl font-semibold mb-4">Booking Component</h1>
-        <div className="md:flex justify-around ">
+        <h1 className="text-xl font-semibold mb-4">Initial Consultation</h1>
+        <p>Check out our availability and book the date and time that works for you</p>
+        <div className="md:flex justify-center gap-10 ">
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Select Date and Time:</label>
           <DatePicker
@@ -64,16 +72,13 @@ const ReservationCalendar: React.FC = () => {
                 <h1 className="text-2xl py-3 underline">Initial Consultation</h1>
                 <p className="py-1 text-lg">Ify Tony-Osondu</p>
                 <p >Zoom meeting</p>
-                <p className="py-1">30 mins</p>
-                <p className="font-bold">US $100</p>
+                <p className="py-1">{time}</p>
+                <p className="font-bold">US ${price}</p>
             </div>
         </div>
                 <div className="md:w-1/3 mx-auto">
-                    <button className="w-full py-3 rounded-md bg-[#DB00A1]" disabled={selectedDate === null ? true : false} onClick={()=> navigate('/booking-form')}>Next</button>
+                    <button className="w-full py-3 rounded-md bg-[#DB00A1]" disabled={selectedDate === null ? true : false} onClick={()=> navigate('/booking-form/' + id)}>Next</button>
                 </div>
-
-        {/* <h1>{selectedDate}</h1> */}
-        {/* Other booking-related fields and buttons can be added here */}
       </div>
     );
 };

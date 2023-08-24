@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-black text-white py-5">
       <div className="flex justify-center gap-5 items-center">
-        <Link to="" className="block">
+        <Link to="https://www.youtube.com/channel/UCt6hVwN8TmAt0cQ8lUEy-MQ" className="block">
           <IoLogoYoutube />
         </Link>
         <Link to="https://wa.me/+1(639)382-9422" className="block">

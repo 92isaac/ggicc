@@ -1,13 +1,29 @@
 import React from "react";
 import { GrFormPrevious } from "react-icons/gr";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GlobalUseContext } from "../utils/Context";
+import { services } from "../utils/data";
+
+
+
+interface DataType {
+  id: string;
+  time: string;
+  price: number;
+  image: string;
+}
+
 
 export const BookingForm: React.FC = () => {
   const navigate = useNavigate();
   const { selectedDate, formdata, setFormData } = GlobalUseContext();
   console.log(selectedDate ? selectedDate.toTimeString() : null);
   const currentDate = new Date();
+
+  const { id } = useParams<{ id: string }>();
+  const bookinDetails: DataType = services.find(
+    (service) => service.id === id
+  )!;
   return (
     <div className="px-4">
       <div className="px-4 mt-2">
@@ -17,7 +33,7 @@ export const BookingForm: React.FC = () => {
         />
       </div>
       <form className="my-5 md:flex justify-around">
-        <div>
+        <div className="px-5">
           <h1 className="text-2xl">Fill out your details</h1>
           <div className="h-0.5 bg-gray-400 my-5"></div>
           <p className="mb-5">Tell us a bit about yourself</p>
@@ -83,14 +99,14 @@ export const BookingForm: React.FC = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="px-5">
           <h1 className="text-2xl py-3 underline">Initial Consultation</h1>
           <h2>Date: {selectedDate ? selectedDate.toDateString() : null}</h2>
           <h2>Time: {selectedDate ? selectedDate.toTimeString() : null}</h2>
           <p className="py-1 text-lg">Ify Tony-Osondu</p>
           <p>Zoom meeting</p>
           <p className="py-1">30 mins</p>
-          <p className="font-bold">US $100</p>
+          <p className="font-bold">US ${bookinDetails.price}</p>
 
           <div>
             <small className="block text-xs">
@@ -100,16 +116,17 @@ export const BookingForm: React.FC = () => {
               {currentDate.toTimeString()}
             </small>
           </div>
-          <div className="w-full mx-auto">
+          <div className="w-full mx-auto mt-4">
             <button
-              className="w-full py-3 rounded-md bg-[#DB00A1] text-white"
+            disabled={formdata.name ==='' && formdata.email ==='' ? true : false}
+              className={`${formdata.name ==='' && formdata.email ==='' ? 'bg-gray-300' : "bg-[#DB00A1]" }  w-full py-3 rounded-md text-white`}
               onClick={(e) => {
                 e.preventDefault();
-                navigate("/booking-form");
+                // navigate("/booking-form");
                 console.log(formdata);
               }}
             >
-              Next
+              {formdata.name ==='' && formdata.email ==='' ? "Fill the form " : "Next"}
             </button>
           </div>
         </div>

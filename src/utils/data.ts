@@ -36,3 +36,19 @@ export const propectusList: DataType[] = [
     image: "/luther.png",
   },
 ];
+
+
+export const services =[
+  {
+      id:"30-minutes",
+      time:"30Min",
+      price: 100,
+      image:'/11062b_d00559f81ba84b968b58859c3dbdf4aa~mv2_d_3762_2508_s_4_2.webp'
+  },
+  {
+      id:"1-hrs",
+      time:"1hr",
+      price: 151,
+      image:""
+  },
+]
