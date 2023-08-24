@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AiFillCaretDown } from "react-icons/ai";
 import { GlobalUseContext } from "../utils/Context";
@@ -9,9 +9,24 @@ export const Propectus: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { toggle, handleChange } = GlobalUseContext();
+  const dropdownRef = useRef<HTMLLIElement>(null);
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="bg-[#72A407] flex justify-around items-center">
@@ -27,7 +42,7 @@ export const Propectus: React.FC = () => {
             </li>
           ))}
 
-          <li className="mb-4 md:mb-0 relative cursor-pointer" onClick={toggleDropdown}>
+          <li className="mb-4 md:mb-0 relative cursor-pointer" onClick={toggleDropdown} ref={dropdownRef}>
             {" "}
             Propectus
             <AiFillCaretDown className="inline  text-gray-700 hover:text-gray-900 focus:outline-none focus:ring focus:ring-opacity-50" />

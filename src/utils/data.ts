@@ -1,9 +1,14 @@
+// import { GlobalUseContext } from "./Context";
+
 interface DataType {
   id: string;
   title: string;
   path: string;
   image: string;
 }
+
+// const { oneHour, thirtyMinutes } = GlobalUseContext()
+
 
 export const propectusList: DataType[] = [
   {

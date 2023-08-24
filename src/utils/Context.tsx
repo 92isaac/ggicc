@@ -7,7 +7,9 @@ interface GlobalData {
   selectedDate: Date | null;
   formdata:object,
   divRef: any;
-  setFormData:any,
+  oneHour: number;
+  thirtyMinutes: number;
+  setFormData:any;
   handleChange: (nextChecked: boolean) => void;
   handleDropDown: (nextChecked: boolean) => void;
   handleClick:()=> void;
@@ -29,7 +31,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [dropdown, setDropdown] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const divRef = useRef<HTMLDivElement | null>(null);
-
+  const oneHour = 150;
+  const thirtyMinutes = 100;
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -56,6 +59,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     dropdown,
     formdata,
     selectedDate,
+    oneHour,
+    thirtyMinutes,
     handleChange,
     handleClick,
     handleDropDown,
