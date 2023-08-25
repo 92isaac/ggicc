@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { School } from '../components/School';
 import { propectusList } from '../utils/data';
+import { Loading } from '../utils/Loading';
 
 interface DataType {
 id: string;
@@ -11,16 +12,26 @@ id: string;
   }
 
 
-export const SchoolMore:React.FC = () => {
+ const SchoolMore:React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const schoolDisplay: DataType = propectusList.find(
     (project) => project.id === id
   )!;
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 1000);
+  }, []);
+
+  if (!loading) return <Loading />;
 
   return (
-    <div className='mt-40'>
+    <div className='mt-40 min-h-screen'>
       <School {...schoolDisplay}/>
     </div>
   )
 
   }
+  export default SchoolMore

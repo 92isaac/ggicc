@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom";
 import MarqSlider from "../components/MarqSlider";
+import { useEffect, useState } from "react";
+import { Loading } from "../utils/Loading";
 
-export const Home = () => {
+ const Home = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 1000);
+  }, []);
+
+  if (!loading) return <Loading />;
   return (
-    <div className="mt-24 md:mt-48">
+    <div className="mt-24 md:mt-48 min-h-screen">
       <div className="md:flex justify-center gap-20 mt-10 mx-auto w-1/2 md:w-1/3 items-center">
         <button className="uppercase px-6 py-2 block w-full font-extrabold hover:bg-white text-[#72A407]">
           Our Partners
@@ -100,3 +111,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home
