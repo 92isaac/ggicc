@@ -7,6 +7,7 @@ import { BookOnline } from './routes/BookOnline'
 import BookScheduler from './routes/BookScheduler'
 import ScheduleForm from './routes/ScheduleForm'
 import ScrollToTop from './utils/ScrollToTop'
+import NotFoundPage from './routes/PageNotFound'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/scheduler/:id' element={<BookScheduler/>}/>
         <Route path='/booking-form/:id' element={<ScheduleForm/>}/>
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
     </>
   )
