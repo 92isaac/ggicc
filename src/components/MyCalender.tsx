@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { GlobalUseContext } from "../utils/Context";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
 
 
 interface CalendarProps {
@@ -48,6 +49,14 @@ const ReservationCalendar: React.FC<CalendarProps> = ({time, price, id}) => {
         
         return maxTime;
       };
+
+      const handleSubmit =()=>{
+        if(selectedDate === null){
+          toast.error("Please select a date and time")
+        }else{
+          navigate('/booking-form/' + id)
+        } 
+      }
   
     return (
       <div className="p-4">
@@ -79,7 +88,7 @@ const ReservationCalendar: React.FC<CalendarProps> = ({time, price, id}) => {
             </div>
         </div>
                 <div className="md:w-1/3 mx-auto">
-                    <button className="w-full py-3 rounded-md bg-[#DB00A1]" disabled={selectedDate === null ? true : false} onClick={()=> navigate('/booking-form/' + id)}>Next</button>
+                    <button className="w-full py-3 rounded-md bg-[#DB00A1]"  onClick={()=> {handleSubmit()}}>Next</button>
                 </div>
       </div>
     );

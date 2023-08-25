@@ -3,6 +3,7 @@ import { GrFormPrevious } from "react-icons/gr";
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalUseContext } from "../utils/Context";
 import { services } from "../utils/data";
+import { toast } from 'react-toastify'
 
 
 
@@ -122,7 +123,7 @@ export const BookingForm: React.FC = () => {
               className={`${formdata.name ==='' && formdata.email ==='' ? 'bg-gray-300' : "bg-[#DB00A1]" }  w-full py-3 rounded-md text-white`}
               onClick={(e) => {
                 e.preventDefault();
-                // navigate("/booking-form");
+                toast.success("Thank you for creating this meeting")
                 console.log(formdata);
               }}
             >
