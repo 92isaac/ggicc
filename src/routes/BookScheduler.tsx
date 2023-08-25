@@ -18,7 +18,7 @@ const BookScheduler:React.FC = () => {
     (project) => project.id === id
   )!;
   return (
-    <div>
+    <div className='mt-20 md:mt-48'>
         <ReservationCalendar {...bookinDetails} />
     </div>
   )

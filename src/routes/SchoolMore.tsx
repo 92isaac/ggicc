@@ -18,7 +18,9 @@ export const SchoolMore:React.FC = () => {
   )!;
 
   return (
-    <School {...schoolDisplay}/>
+    <div className='mt-40'>
+      <School {...schoolDisplay}/>
+    </div>
   )
 
   }

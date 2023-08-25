@@ -5,7 +5,8 @@ import { SharedLayout } from './utils/SharedLayout'
 import { SchoolMore } from './routes/SchoolMore'
 import { BookOnline } from './routes/BookOnline'
 import BookScheduler from './routes/BookScheduler'
-import { BookingForm } from './components/BookingForm'
+import ScheduleForm from './routes/ScheduleForm'
+import ScrollToTop from './utils/ScrollToTop'
 
 
 function App() {
@@ -13,13 +14,14 @@ function App() {
 
   return (
     <>
+    <ScrollToTop />
     <Routes>
       <Route path='/' element={<SharedLayout />}>
         <Route path='/' element={<Home/>}/>
         <Route path='/book-online' element={<BookOnline/>}/>
         <Route path='/school/:id' element={<SchoolMore/>}/>
         <Route path='/scheduler/:id' element={<BookScheduler/>}/>
-        <Route path='/booking-form/:id' element={<BookingForm/>}/>
+        <Route path='/booking-form/:id' element={<ScheduleForm/>}/>
       </Route>
     </Routes>
     </>

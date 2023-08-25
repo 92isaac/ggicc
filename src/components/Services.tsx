@@ -13,7 +13,7 @@ export const Services: React.FC = () => {
           <div className="shadow-md my-6 " key={service.id}>
             <div className="w-full">
               <img
-                src="/11062b_d00559f81ba84b968b58859c3dbdf4aa~mv2_d_3762_2508_s_4_2.webp"
+                src={service.image}
                 alt=""
                 className="object-cover w-full"
               />

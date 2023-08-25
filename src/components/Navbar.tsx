@@ -1,11 +1,13 @@
 import React from "react";
 import { FiMenu } from "react-icons/fi"
 import { GlobalUseContext } from "../utils/Context";
+import { Propectus } from "./Propectus";
 
 
 export const Navbar: React.FC = () => {
   const { handleChange } = GlobalUseContext()
     return (
+        <div className="bg-[#72A407] fixed w-full top-0 z-40">
         <nav className="bg-[#72A407] py-4 px-4 flex justify-between items-center">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
@@ -26,5 +28,7 @@ export const Navbar: React.FC = () => {
             <FiMenu className="text-2xl text-white transition-transform duration-300 ease-in-out" onClick={()=>{handleChange()}} />
           </div>
         </nav>
+        <Propectus />
+        </div>
       );
 }

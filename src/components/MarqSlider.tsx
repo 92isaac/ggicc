@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const MarqSlider:React.FC = () => {
   return (
-    <div>
+    <div className=''>
         <Marquee autoFill={true} pauseOnHover={true}>
             {marqdata.map((item)=>(
                 <div key={item.id} className=' w-36 md:w-60'>

@@ -49,6 +49,6 @@ export const services =[
       id:"1-hrs",
       time:"1hr",
       price: 151,
-      image:""
+      image:"/booking-2.webp"
   },
 ]

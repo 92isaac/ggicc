@@ -38,7 +38,7 @@ export const BookingForm: React.FC = () => {
           <div className="h-0.5 bg-gray-400 my-5"></div>
           <p className="mb-5">Tell us a bit about yourself</p>
           <div>
-            <div className="flex justify-between items-center gap-5 my-4">
+            <div className="md:flex justify-between items-center gap-5 my-4">
               <div>
                 <label htmlFor="" className="block pb-2">
                   Name <span className="text-red-500">*</span>
