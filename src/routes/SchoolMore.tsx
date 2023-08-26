@@ -28,7 +28,7 @@ id: string;
   if (!loading) return <Loading />;
 
   return (
-    <div className='mt-40 min-h-screen'>
+    <div className='mt-20 md:mt-40'>
       <School {...schoolDisplay}/>
     </div>
   )
