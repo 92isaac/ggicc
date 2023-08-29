@@ -21,8 +21,13 @@ export const Sidebar: React.FC = () => {
   return (
     <div className="transform transition duration-1000 ease-in-out ">
       <div className="bg-white p-4 rounded-lg shadow-md  mb-4">
+        <h2 className="text-xl font-semibold mb-4">Notifications</h2>
+        {/* Notification content */}
+        <FaBell className="text-2xl mb-2" />
+        <p>Notification 1</p>
+        <p>Notification 2</p>
+
         <div className="">
-          <h1>Welcome <span className="block">{auth?.currentUser?.email}</span></h1>
           <button
             onClick={() => {
               handleLOgout();
@@ -31,11 +36,6 @@ export const Sidebar: React.FC = () => {
             Log Out
           </button>
         </div>
-        <h2 className="text-xl font-semibold mb-4">Notifications</h2>
-        {/* Notification content */}
-        <FaBell className="text-2xl mb-2" />
-        <p>Notification 1</p>
-        <p>Notification 2</p>
       </div>
     </div>
   );

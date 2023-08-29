@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "../components/Sidebar";
 import { DashboardNavbar } from "../components/DashboardNavbar";
-import { Graph } from "../components/Graph";
+// import { Graph } from "../components/Graph";
 // import { Footer } from "../components/Footer/Footer";
 // import { MobileFooter } from "../components/Footer/MobileFooter";
 // import { Navbar } from "../components/Navigationbar/Navbar";
@@ -19,10 +19,10 @@ const SharedDashboardLayout = () => {
             <DashboardNavbar />
           </div>
          <section className="flex w-full justify-between items-center md:mx-0">
-         <main className="w-3/4  md:mb-10 md:h-[83vh] overflow-y-scroll my-2 border rounded-md">
+         <main className="w-  md:mb-10 md:h-[83vh] overflow-y-scroll my-2 border rounded-md">
             <Outlet />
           </main>
-          <Graph/>
+          {/* <Graph/> */}
          </section>
         </div>
       </div>

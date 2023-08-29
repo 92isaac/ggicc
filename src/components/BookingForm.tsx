@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { GrFormPrevious } from "react-icons/gr";
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalUseContext } from "../utils/Context";
 import { services } from "../utils/data";
 import { toast } from 'react-toastify'
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 
 
@@ -25,6 +28,26 @@ export const BookingForm: React.FC = () => {
   const bookinDetails: DataType = services.find(
     (service) => service.id === id
   )!;
+
+  const bookingCollections = collection(db, 'bookings')
+  const handleBookings= async()=>{
+      try{
+        await addDoc(bookingCollections, {
+          name: formdata.name,
+          data:selectedDate.toDateString(),
+          duration:bookinDetails.time,
+          email:formdata.email,
+          message:formdata.message,
+          phonenumber:formdata.phoneNumber,
+          time:selectedDate.toTimeString(),
+        } )
+        toast.success(`Meeting created ${formdata.name} successfully`)
+      }catch(err:any){
+        toast.error("An error occurred")
+      }
+
+  }
+
   return (
     <div className="px-4">
       <div className="px-4 mt-2">
@@ -79,7 +102,7 @@ export const BookingForm: React.FC = () => {
                 type="tel"
                 title="telephone"
                 className="border rounded-md p-2 w-full"
-                value={formdata.phoneNumber}
+                value={Number(formdata.phoneNumber)}
                 onChange={(e) =>
                   setFormData({ ...formdata, phoneNumber: e.target.value })
                 }
@@ -106,8 +129,8 @@ export const BookingForm: React.FC = () => {
           <h2>Time: {selectedDate ? selectedDate.toTimeString() : null}</h2>
           <p className="py-1 text-lg">Ify Tony-Osondu</p>
           <p>Zoom meeting</p>
-          <p className="py-1">30 mins</p>
-          <p className="font-bold">US ${bookinDetails.price}</p>
+          <p className="py-1">{bookinDetails?.time}</p>
+          <p className="font-bold">US ${bookinDetails?.price}</p>
 
           <div>
             <small className="block text-xs">
@@ -121,10 +144,10 @@ export const BookingForm: React.FC = () => {
             <button
             disabled={formdata.name ==='' && formdata.email ==='' ? true : false}
               className={`${formdata.name ==='' && formdata.email ==='' ? 'bg-gray-300' : "bg-[#DB00A1]" }  w-full py-3 rounded-md text-white`}
-              onClick={(e) => {
-                e.preventDefault();
-                toast.success("Thank you for creating this meeting")
-                console.log(formdata);
+              onClick={() => {
+                // e.preventDefault();
+                handleBookings()
+                navigate('/')
               }}
             >
               {formdata.name ==='' && formdata.email ==='' ? "Fill the form " : "Next"}

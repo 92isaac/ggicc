@@ -6,18 +6,15 @@ import { collection, getDocs } from "firebase/firestore";
 // import { Graph } from './Graph';
 
 interface BookingTypes {
-    id: any;
-    name: string;
-    data:string;
-    duration:string;
-    email:string;
-    message:string;
-    phonenumber:number;
-    time:string;
+  id: any;
+  name: string;
+  data: string;
+  duration: string;
+  email: string;
+  message: string;
+  phonenumber: number;
+  time: string;
 }
-
-
-
 
 const Dash: React.FC = () => {
   const [orders, setOrder] = useState([]);
@@ -47,14 +44,18 @@ const Dash: React.FC = () => {
         {/* Booking order list */}
         <FaListUl className="text-2xl mb-2" />
         <div className="w-full overflow-x-auto border border-b-md md:mb-20">
-        {orders?.map((order:BookingTypes, idx) => (
-          <table className="w-full whitespace-no-wrap border-collapse border  border-slate-400 border-b-md" key={order.id}>
+          <table
+            className="w-full whitespace-no-wrap border-collapse border  border-slate-400 border-b-md"
+          
+          >
             <thead>
               <tr className="text-left font-bold">
                 <th className="px-6 py-1 border border-slate-300">s/n</th>
                 <th className="px-6 py-1 border border-slate-300">Name</th>
                 <th className="px-6 py-1 border border-slate-300">email</th>
-                <th className="px-6 py-1 border border-slate-300">phone Number</th>
+                <th className="px-6 py-1 border border-slate-300">
+                  phone Number
+                </th>
                 <th className="px-6 py-1 border border-slate-300">Message</th>
                 <th className="px-6 py-1 border border-slate-300">Date</th>
                 <th className="px-6 py-1 border border-slate-300">Time</th>
@@ -63,20 +64,39 @@ const Dash: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="px-6 py-1 border border-slate-300">{idx + 1}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.name}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.email}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.phonenumber}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.message}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.data}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.time}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.duration}</td>
-                <td className="px-6 py-1 border border-slate-300">{order?.id}</td>
-              </tr>
+              {orders?.map((order: BookingTypes, idx) => (
+                <tr   key={order.id}>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {idx + 1}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.name}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.email}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.phonenumber}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.message}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.data}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.time}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.duration}
+                  </td>
+                  <td className="px-6 py-1 border border-slate-300">
+                    {order?.id}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
-        ))}
         </div>
       </div>
 
