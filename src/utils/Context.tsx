@@ -6,17 +6,18 @@ interface GlobalData {
   dropdown: boolean;
   selectedDate: Date | null;
   formdata:object,
+  login:object,
   divRef: any;
   oneHour: number;
   thirtyMinutes: number;
   setFormData:any;
+  setLogin:any;
   handleChange: (nextChecked: boolean) => void;
   handleDropDown: (nextChecked: boolean) => void;
   handleClick:()=> void;
   handleDateChange: (date: Date | null) => void;
 
 }
-
 
 
 export const AppContext = createContext<GlobalData | null | any >(null);
@@ -28,6 +29,7 @@ interface AppProviderProps {
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [toggle, setToggle] = useState(false);
   const [formdata, setFormData] = useState({name:'', email:'', phoneNumber:"", message:''})
+  const [ login, setLogin] = useState({email:'', password:'',})
   const [dropdown, setDropdown] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -58,6 +60,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     divRef,
     dropdown,
     formdata,
+    login,
     selectedDate,
     oneHour,
     thirtyMinutes,
@@ -66,6 +69,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     handleDropDown,
     handleDateChange,
     setFormData,
+    setLogin,
   };
 
   return (

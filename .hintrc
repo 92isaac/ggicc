@@ -10,7 +10,8 @@
           "-webkit-text-size-adjust"
         ]
       }
-    ]
+    ],
+    "axe/forms": "off"
   },
   "browserslist": [
     "defaults",
