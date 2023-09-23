@@ -42,7 +42,9 @@ const Dash: React.FC = () => {
       <div className="bg-white p-4 rounded-lg shadow-md w-full mb-4 md:mr-4">
         <h2 className="text-xl font-semibold mb-4">Booking Orders</h2>
         {/* Booking order list */}
+        <div>
         <FaListUl className="text-2xl mb-2" />
+        </div>
         <div className="w-full overflow-x-auto border border-b-md md:mb-20">
           <table
             className="w-full whitespace-no-wrap border-collapse border  border-slate-400 border-b-md"

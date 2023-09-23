@@ -28,7 +28,7 @@ export const Sidebar: React.FC = () => {
         <p>Notification 2</p>
 
         <div className="">
-          <button
+          <button className="hover:bg-[#88DA40] px-4 py-1 rounded-md transition duration-1000 ease-in-out hover:text-white"
             onClick={() => {
               handleLOgout();
             }}
